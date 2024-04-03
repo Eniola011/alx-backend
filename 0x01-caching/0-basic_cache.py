@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-BasicCache
+    BasicCache Module
 """
 
 
@@ -23,13 +23,24 @@ class BasicCache(BaseCaching):
     """
 
     def put(self, key, item):
-        """ Add an item in cache
+        """
+            Add an item in cache.
+            Args:
+                key: of the dict.
+                item: value of the key.
+
         """
         if key or item is not None:
             self.cache_data[key] = item
 
     def get(self, key):
-        """ Get an item by key
+        """
+            Get an item by key.
+            Args:
+                key: of the dict.
+            Return:
+                value of the key.
+
         """
         value = self.cache_data.get(key)
         return value
