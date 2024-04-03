@@ -1,16 +1,16 @@
 #!/usr/bin/python3
 """
-FIFOCache
+LIFOCache
 """
 
 
 from base_caching import BaseCaching
 
 
-class FIFOCache(BaseCaching):
-    """ basic cache system using FIFO algorithm """
+class LIFOCache(BaseCaching):
+    """ basic cache system using LIFO algorithm """
     def __init__(self):
-        """ initialize FIFO cache """
+        """ initialize LIFO cache """
         super().__init__()
 
     def put(self, key, item):
@@ -19,9 +19,12 @@ class FIFOCache(BaseCaching):
             value = self.get(key)
             if value is None:
                 if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-                    discarded_key = list(self.cache_data.keys())[0]
-                    del self.cache_data[discarded_key]
-                    print("DISCARD: {}".format(discarded_key))
+                    discarded_key = list(self.cache_data.keys())
+                    last_key = len(discarded_key) - 1
+                    del self.cache_data[discarded_key[last_key]]
+                    print("DISCARD: {}".format(discarded_key[last_key]))
+            else:
+                del self.cache_data[key]
 
             self.cache_data[key] = item
 
