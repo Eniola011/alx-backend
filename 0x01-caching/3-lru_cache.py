@@ -32,7 +32,7 @@ class LRUCache(BaseCaching):
             initialize LRU cache
         """
         super().__init__()
-        self.lru_queue = [] # lru: is least recently used.
+        self.lru_queue = []  # lru: is least recently used.
 
     def put(self, key, item):
         """
