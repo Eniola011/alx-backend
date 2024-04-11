@@ -26,18 +26,25 @@ class Config:
 app.config.from_object(Config)
 
 
+@app.route('/', methods=['GET'], strict_slashes=False)
+def index():
+    """ index page """
+    return render_template("4-index.html")
+
 def get_locale():
-    """ Determine the best match with our supported languages. """
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
+    """
+       >> Determine the best match with our supported languages.
+       >> Does incoming request contains locale argument?
+    """
+    if request.args.get('locale'):
+        usr_locale = request.args.get('locale')
+        if usr_locale in app.config['LANGUAGES']:
+            return usr_locale
+    else:
+        return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 # Initialize Flask-Babel with the application and the locale selector
 babel.init_app(app, locale_selector=get_locale)
-
-
-@app.route("/")
-def index():
-    """ index page """
-    return render_template("3-index.html")
 
 
 if __name__ == "__main__":
