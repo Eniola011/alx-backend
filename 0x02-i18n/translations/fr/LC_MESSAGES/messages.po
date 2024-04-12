@@ -35,3 +35,7 @@ msgstr "Vous êtes connecté en tant que %(username)s."
 #: templates/7-index.html:16
 msgid "not_logged_in"
 msgstr "Vous n'êtes pas connecté."
+
+#: templates/index.html:18
+msgid "current_time_is"
+msgstr "Nous sommes le %(current_time)s."

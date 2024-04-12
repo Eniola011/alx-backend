@@ -34,7 +34,7 @@ app.config.from_object(Config)
 @app.route('/', methods=['GET'], strict_slashes=False)
 def index():
     """ index page """
-    return render_template("5-index.html")
+    return render_template("6-index.html")
 
 def get_locale():
     """
